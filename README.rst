@@ -1,15 +1,15 @@
 murmurhash3
 ===========
 
-:Version: 2.3.4
-:Download: http://pypi.python.org/pypi/murmurhash3/
-:Source: http://github.com/veegee/mmh3
+:Version: 0.1
+:Download: http://pypi.python.org/pypi/splitmmh3/
+:Source: http://github.com/splitio/mmh3
 :Keywords: hash, MurmurHash
 
 murmurhash3 is a Python library for MurmurHash (MurmurHash3), a set of fast and
 robust hash functions. This library is a Python extension module written in C.
 
-Supports Python >= 3.2.0 on all platforms.
+Supports Python >= 2.7
 
 
 Usage
@@ -17,13 +17,13 @@ Usage
 
 Install::
 
-    pip install murmurhash3
+    pip install splitmmh3
 
 Usage::
 
-    pip install murmurhash3
+    pip install splitmmh3
 
-    >>> import mmh3
+    >>> import splitmmh3 as mmh3
     >>> mmh3.hash('foo')  # 32-bit signed int
     -156908512
     >>> mmh3.hash64('foo')  # two 64-bit signed ints (the 128-bit hash sliced in half)
