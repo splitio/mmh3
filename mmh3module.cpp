@@ -3,17 +3,6 @@
 #include <Python.h>
 #include "murmur_hash_3.hpp"
 
-#if defined(_MSC_VER)
-// Visual C++
-typedef signed char int8_t;
-typedef signed long int32_t;
-typedef signed __int64 int64_t;
-typedef unsigned char uint8_t;
-typedef unsigned long uint32_t;
-typedef unsigned __int64 uint64_t;
-#else
-#include <stdint.h>
-#endif
 
 static PyObject *
 mmh3_hash(PyObject *self, PyObject *args, PyObject *keywds) {
@@ -107,8 +96,8 @@ struct module_state {
 #if PY_MAJOR_VERSION >= 3
 #define GETSTATE(m) ((struct module_state*)PyModule_GetState(m))
 #else
-#define GETSTATE(m) (&_state)
 static struct module_state _state;
+#define GETSTATE(m) (&_state)
 #endif
 
 static PyMethodDef Mmh3Methods[] = {
@@ -135,17 +124,17 @@ static PyMethodDef Mmh3Methods[] = {
     {NULL, NULL, 0, NULL}
 };
 
-static int mmh3_traverse(PyObject *m, visitproc visit, void *arg) {
-    Py_VISIT(GETSTATE(m)->error);
-    return 0;
-}
-
+#if PY_MAJOR_VERSION >= 3
 static int mmh3_clear(PyObject *m) {
     Py_CLEAR(GETSTATE(m)->error);
     return 0;
 }
 
-#if PY_MAJOR_VERSION >= 3
+static int mmh3_traverse(PyObject *m, visitproc visit, void *arg) {
+    Py_VISIT(GETSTATE(m)->error);
+    return 0;
+}
+
 static struct PyModuleDef mmh3module = {
     PyModuleDef_HEAD_INIT,
     "mmh3",
@@ -177,7 +166,7 @@ PyMODINIT_FUNC PyInit_mmh3(void) {
 }
 #else
 PyMODINIT_FUNC initmmh3(void) {
-    PyObject *module = Py_InitModule3(
+    Py_InitModule3(
         "mmh3",
         Mmh3Methods,
         "mmh3 is a Python frontend to MurmurHash3, a fast and robust hash library.\n"
