@@ -13,12 +13,12 @@ classifiers = [
 
 setup(
     name='splitmmh3',
-    version='1.0.1',
+    version='1.0.3',
     description=('An adaption of a public domain library'
                  'with python2.7 support'),
     license='Public Domain',
-    author='V G, Split Software',
-    author_email='veegee@veegee.org, www.split.io',
+    author='Split software',
+    author_email='python@split.io',
     url='http://packages.python.org/splitmmh3',
     ext_modules=[mmh3module],
     keywords=['hash', 'MurmurHash'],
