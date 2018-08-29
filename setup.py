@@ -13,7 +13,7 @@ classifiers = [
 
 setup(
     name='splitmmh3',
-    version='1.0.1',
+    version='1.0.2',
     description=('An adaption of a public domain library'
                  'with python2.7 support'),
     license='Public Domain',
