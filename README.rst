@@ -1,7 +1,7 @@
 murmurhash3
 ===========
 
-:Version: 1.0.2
+:Version: 1.0.3
 :Download: http://pypi.python.org/pypi/splitmmh3/
 :Source: http://github.com/splitio/mmh3
 :Keywords: hash, MurmurHash
